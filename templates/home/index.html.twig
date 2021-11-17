@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+	<!-- Hero section -->
+	<section class="hero-section">
+		<div class="hero-slider owl-carousel">
+			{# <div class="hs-item">
+				<div class="container">
+				{% for dish in dishes %}
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="hs-text">
+							
+								<h2><span>{{dish.name}}</span>!</h2>
+								<p>Try now, {{dish.description}} for only {{dish.price}} EUR!</p>
+								<a href="{{path('menu')}}" class="site-btn">Menu</a>
+								<a href="{{path('orderMeal', {id: dish.id})}}" class="site-btn sb-c2">Order</a>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="hr-img">
+								<img src="{{asset('images/' ~ dish.image)}}" alt="">
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div> #}
+			<div class="hs-item">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="hs-text">
+								<h2><span>{{dish1.name}}</span>!</h2>
+								<p>Try now, {{dish1.description}} for only {{dish1.price}} EUR!</p>
+								<a href="{{path('menu')}}" class="site-btn">Menu</a>
+								<a href="{{path('orderMeal', {id: dish1.id})}}" class="site-btn sb-c2">Order</a>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="hr-img">
+								<img src="{{asset('images/' ~ dish1.image)}}" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="hs-item">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="hs-text">
+								<h2><span>{{dish2.name}}</span>!</h2>
+								<p>Try now, {{dish2.description}} for only {{dish2.price}} EUR!</p>
+								<a href="{{path('menu')}}" class="site-btn">Menu</a>
+								<a href="{{path('orderMeal', {id: dish2.id})}}" class="site-btn sb-c2">Order</a>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="hr-img">
+								<img src="{{asset('images/' ~ dish2.image)}}" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Hero section end -->
+
+{% endblock %}

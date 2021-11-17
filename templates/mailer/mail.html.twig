@@ -1,0 +1,16 @@
+{% apply inline_css %}
+{# {% apply inline_css(source('@css/email.css')) %} #}
+
+<style>
+    h3 {
+        color: #42e33e;
+    }
+</style>
+<h1>Hello waiter</h1>
+
+<h3>
+    The table {{meal}} send you this message:
+</h3>
+
+<p> {{text}}</p>
+{% endapply %}

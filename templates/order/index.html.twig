@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% set sum = 0%}
+
+<br>
+<div class="container">
+<h2>Your order</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Order nr.</td>
+            <td>Name</td>
+            <td>Price</td>
+            <td>Status</td>
+            <td></td>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for order in orders %}
+        {% set sum = sum + order.price %}
+            <tr>
+            <td>{{order.orderNr}}</td>
+            <td>{{order.name}}</td>
+            <td>{{order.price}}</td>
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+            <td>{{order.status}}</td> 
+            {% endif %} 
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <td>
+                <div class="dropdown show">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{order.status}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="{{ path('status', {id: order.id, status:'open'}) }}">Open</a>
+                        <a class="dropdown-item" href="{{ path('status', {id: order.id, status:'ready'}) }}">Ready</a>
+                        <a class="dropdown-item" href="{{ path('status', {id: order.id, status:'archive'}) }}">Archive</a>
+                    </div>
+                </div>
+            </td>   
+            {% endif %} 
+            {% if order.status == 'open' %}
+            <td><a class="btn btn-outline-danger btn-sm" href={{path('delete', {id: order.id} )}} role="button">Remove</a>
+            {% endif %} 
+            </td>     
+        </tr>
+        {% endfor %}
+
+        <td></td><td></td>
+        <td>{{sum}} EUR</td>
+        <td></td><td></td>
+   </tbody> 
+</table>
+</div>
+
+{% endblock %}
